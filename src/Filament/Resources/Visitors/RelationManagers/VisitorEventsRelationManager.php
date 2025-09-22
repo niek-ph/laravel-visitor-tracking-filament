@@ -5,13 +5,15 @@ namespace NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\Rela
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\VisitorEvents\VisitorEventResource;
 
 class VisitorEventsRelationManager extends RelationManager
 {
     protected static string $relationship = 'events';
 
-    protected static ?string $relatedResource = VisitorEventResource::class;
+    public static function getRelatedResource(): string
+    {
+        return config('visitor-tracking-filament.resources.VisitorEventResource');
+    }
 
     public function table(Table $table): Table
     {

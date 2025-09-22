@@ -4,15 +4,18 @@ namespace NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\Page
 
 use Filament\Resources\Pages\ListRecords;
 use Filament\Support\Enums\Width;
-use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\VisitorResource;
+use NiekPH\LaravelVisitorTrackingFilament\Filament\Widgets\EventsByTypeChartWidget;
 use NiekPH\LaravelVisitorTrackingFilament\Filament\Widgets\RecentVisitorsChartWidget;
 use NiekPH\LaravelVisitorTrackingFilament\Filament\Widgets\VisitorCountTodayWidget;
 
 class ListVisitors extends ListRecords
 {
-    protected static string $resource = VisitorResource::class;
-
     protected Width|string|null $maxContentWidth = 'full';
+
+    public static function getResource(): string
+    {
+        return config('visitor-tracking-filament.resources.VisitorResource');
+    }
 
     protected function getHeaderActions(): array
     {
@@ -30,6 +33,7 @@ class ListVisitors extends ListRecords
         return [
             VisitorCountTodayWidget::class,
             RecentVisitorsChartWidget::class,
+            EventsByTypeChartWidget::class,
         ];
     }
 }

@@ -3,11 +3,13 @@
 namespace NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\VisitorEvents\Pages;
 
 use Filament\Resources\Pages\ListRecords;
-use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\VisitorEvents\VisitorEventResource;
 
 class ListEvents extends ListRecords
 {
-    protected static string $resource = VisitorEventResource::class;
+    public static function getResource(): string
+    {
+        return config('visitor-tracking-filament.resources.VisitorEventResource');
+    }
 
     protected function getHeaderActions(): array
     {
