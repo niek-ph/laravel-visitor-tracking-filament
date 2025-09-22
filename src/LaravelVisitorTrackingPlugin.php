@@ -9,23 +9,9 @@ use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\VisitorRes
 
 class LaravelVisitorTrackingPlugin implements Plugin
 {
-    public static string $visitorResource = VisitorResource::class;
+    protected string $visitorResource = VisitorResource::class;
 
-    public static string $visitorEventResource = VisitorEventResource::class;
-
-    public function useVisitorResource(string $visitorResource): static
-    {
-        static::$visitorResource = $visitorResource;
-
-        return $this;
-    }
-
-    public function useVisitorEventResource(string $visitorEventResource): static
-    {
-        static::$visitorEventResource = $visitorEventResource;
-
-        return $this;
-    }
+    protected string $visitorEventResource = VisitorEventResource::class;
 
     public static function make(): static
     {
@@ -41,8 +27,8 @@ class LaravelVisitorTrackingPlugin implements Plugin
     {
         $panel
             ->resources([
-                static::$visitorResource,
-                static::$visitorEventResource,
+                $this->visitorResource,
+                $this->visitorEventResource,
             ])
             ->pages([
 
@@ -52,5 +38,29 @@ class LaravelVisitorTrackingPlugin implements Plugin
     public function boot(Panel $panel): void
     {
         //
+    }
+
+    public function useVisitorResource(string $visitorResource): static
+    {
+        $this->visitorResource = $visitorResource;
+
+        return $this;
+    }
+
+    public function useVisitorEventResource(string $visitorEventResource): static
+    {
+        $this->visitorEventResource = $visitorEventResource;
+
+        return $this;
+    }
+
+    public function getVisitorEventResource(): string
+    {
+        return $this->visitorEventResource;
+    }
+
+    public function getVisitorResource(): string
+    {
+        return $this->visitorResource;
     }
 }
