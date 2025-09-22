@@ -1,13 +1,14 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace NiekPH\LaravelVisitorTrackingFilament;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use VendorName\Skeleton\Commands\SkeletonCommand;
 
-class SkeletonServiceProvider extends PackageServiceProvider
+class LaravelVisitorTrackingFilamentServiceProvider extends PackageServiceProvider
 {
+    public static string $name = 'laravel-visitor-tracking-filament';
+
     public function configurePackage(Package $package): void
     {
         /*
@@ -16,10 +17,9 @@ class SkeletonServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('skeleton')
+            ->name(static::$name)
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_migration_table_name_table')
-            ->hasCommand(SkeletonCommand::class);
+            ->hasTranslations();
     }
 }
