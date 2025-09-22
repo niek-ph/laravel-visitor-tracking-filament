@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use NiekPH\LaravelVisitorTracking\VisitorTracking;
 
-class RecentVisitorsChart extends ChartWidget
+class RecentVisitorsChartWidget extends ChartWidget
 {
     use ChartWidget\Concerns\HasFiltersSchema;
 

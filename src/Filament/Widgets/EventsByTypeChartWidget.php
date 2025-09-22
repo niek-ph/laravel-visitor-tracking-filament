@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use NiekPH\LaravelVisitorTracking\VisitorTracking;
 
-class EventsByTypeChart extends ChartWidget
+class EventsByTypeChartWidget extends ChartWidget
 {
     use ChartWidget\Concerns\HasFiltersSchema;
 

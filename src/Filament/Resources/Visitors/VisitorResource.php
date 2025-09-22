@@ -13,7 +13,8 @@ use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\Pages\View
 use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\RelationManagers\VisitorEventsRelationManager;
 use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\Schemas\VisitorInfolist;
 use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\Tables\VisitorsTable;
-use NiekPH\LaravelVisitorTrackingFilament\Filament\Widgets\RecentVisitorsChart;
+use NiekPH\LaravelVisitorTrackingFilament\Filament\Widgets\EventsByTypeChartWidget;
+use NiekPH\LaravelVisitorTrackingFilament\Filament\Widgets\RecentVisitorsChartWidget;
 use NiekPH\LaravelVisitorTrackingFilament\Filament\Widgets\VisitorCountTodayWidget;
 use UnitEnum;
 
@@ -64,7 +65,8 @@ class VisitorResource extends Resource
     {
         return [
             VisitorCountTodayWidget::class,
-            RecentVisitorsChart::class,
+            RecentVisitorsChartWidget::class,
+            EventsByTypeChartWidget::class,
         ];
     }
 
