@@ -22,7 +22,7 @@ class EventsTable
                     ->label(__('visitor-tracking-filament::resources.visitor_events.table.columns.created_at'))
                     ->placeholder('-'),
                 TextColumn::make('visitor.ip_address')
-                    ->url(fn($record): string => isset($record->visitor_id) ? VisitorResource::getUrl('view',
+                    ->url(fn ($record): string => isset($record->visitor_id) ? VisitorResource::getUrl('view',
                         ['record' => $record->visitor_id]) : '')
                     ->color(Color::Blue)
                     ->sortable()
