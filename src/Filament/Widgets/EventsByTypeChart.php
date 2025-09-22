@@ -54,9 +54,11 @@ class EventsByTypeChart extends ChartWidget
     {
         return $schema->components([
             DateTimePicker::make('startDate')
-                ->default($this->getDefaultStartDate()),
+                ->default($this->getDefaultStartDate())
+                ->label(__('visitor-tracking-filament::widgets.events_by_type.filter.start_date')),
             DateTimePicker::make('endDate')
-                ->default(null),
+                ->default(null)
+                ->label(__('visitor-tracking-filament::widgets.events_by_type.filter.end_date')),
         ]);
     }
 

@@ -53,9 +53,11 @@ class RecentVisitorsChart extends ChartWidget
     {
         return $schema->components([
             DateTimePicker::make('startDate')
-                ->default($this->getDefaultStartDate()),
+                ->default($this->getDefaultStartDate())
+                ->label(__('visitor-tracking-filament::widgets.recent_visitors.filter.start_date')),
             DateTimePicker::make('endDate')
-                ->default(null),
+                ->default(null)
+                ->label(__('visitor-tracking-filament::widgets.recent_visitors.filter.end_date')),
         ]);
     }
 
