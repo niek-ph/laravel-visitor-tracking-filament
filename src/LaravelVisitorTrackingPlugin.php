@@ -13,14 +13,18 @@ class LaravelVisitorTrackingPlugin implements Plugin
 
     public static string $visitorEventResource = VisitorEventResource::class;
 
-    public function useVisitorResource(string $visitorResource): void
+    public function useVisitorResource(string $visitorResource): static
     {
         static::$visitorResource = $visitorResource;
+
+        return $this;
     }
 
-    public function useVisitorEventResource(string $visitorEventResource): void
+    public function useVisitorEventResource(string $visitorEventResource): static
     {
         static::$visitorEventResource = $visitorEventResource;
+
+        return $this;
     }
 
     public static function make(): static
