@@ -2,24 +2,23 @@
 
 namespace NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors;
 
+use BackedEnum;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Table;
 use NiekPH\LaravelVisitorTracking\VisitorTracking;
 use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\Pages\ListVisitors;
 use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\Pages\ViewVisitor;
 use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\RelationManagers\VisitorEventsRelationManager;
 use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\Schemas\VisitorInfolist;
 use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\Tables\VisitorsTable;
-use BackedEnum;
-use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
-use Filament\Tables\Table;
 use NiekPH\LaravelVisitorTrackingFilament\Filament\Widgets\RecentVisitorsChart;
 use NiekPH\LaravelVisitorTrackingFilament\Filament\Widgets\VisitorCountTodayWidget;
 use UnitEnum;
 
 class VisitorResource extends Resource
 {
-
     public static function getModel(): string
     {
         return VisitorTracking::$visitorModel;
@@ -44,7 +43,6 @@ class VisitorResource extends Resource
         return __('visitor-tracking-filament::resources.visitors.plural_label');
     }
 
-
     public static function infolist(Schema $schema): Schema
     {
         return VisitorInfolist::configure($schema);
@@ -61,7 +59,6 @@ class VisitorResource extends Resource
             VisitorEventsRelationManager::make(),
         ];
     }
-
 
     public static function getWidgets(): array
     {

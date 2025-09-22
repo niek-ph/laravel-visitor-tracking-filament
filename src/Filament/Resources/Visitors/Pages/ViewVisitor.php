@@ -2,8 +2,8 @@
 
 namespace NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\Pages;
 
-use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\VisitorResource;
 use Filament\Resources\Pages\ViewRecord;
+use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\VisitorResource;
 
 class ViewVisitor extends ViewRecord
 {

@@ -25,7 +25,6 @@ class VisitorCountTodayWidget extends StatsOverviewWidget
         ];
     }
 
-
     private function getData(): array
     {
         return [

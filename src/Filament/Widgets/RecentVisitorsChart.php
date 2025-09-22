@@ -30,17 +30,14 @@ class RecentVisitorsChart extends ChartWidget
 
     protected static ?int $sort = 1;
 
-
     public function getDescription(): string|Htmlable|null
     {
         $startDate = isset($this->filters['startDate']) ? Carbon::parse($this->filters['startDate']) : $this->getDefaultStartDate();
         $endDate = isset($this->filters['endDate']) ? Carbon::parse($this->filters['endDate']) : now();
 
-
         return __('visitor-tracking-filament::widgets.recent_visitors.description',
             ['start' => $startDate->toDateTimeString(), 'end' => $endDate->toDateTimeString()]);
     }
-
 
     public function getFiltersTriggerAction(): Action
     {
@@ -76,7 +73,7 @@ class RecentVisitorsChart extends ChartWidget
         return app()->isLocal() ?
             $this->generateChartData($startDate, $endDate)
             :
-            Cache::remember('recent-visitors-chart', 300, fn() => $this->generateChartData($startDate, $endDate));
+            Cache::remember('recent-visitors-chart', 300, fn () => $this->generateChartData($startDate, $endDate));
     }
 
     private function generateChartData(?Carbon $start = null, ?Carbon $end = null): array

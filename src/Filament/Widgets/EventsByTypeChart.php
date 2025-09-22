@@ -31,7 +31,6 @@ class EventsByTypeChart extends ChartWidget
 
     protected static ?int $sort = 2;
 
-
     public function getDescription(): string|Htmlable|null
     {
         $startDate = isset($this->filters['startDate']) ? Carbon::parse($this->filters['startDate']) : $this->getDefaultStartDate();
@@ -40,7 +39,6 @@ class EventsByTypeChart extends ChartWidget
         return __('visitor-tracking-filament::widgets.events_by_type.description',
             ['start' => $startDate->toDateTimeString(), 'end' => $endDate->toDateTimeString()]);
     }
-
 
     public function getFiltersTriggerAction(): Action
     {
@@ -67,7 +65,6 @@ class EventsByTypeChart extends ChartWidget
         return now()->subDays(30);
     }
 
-
     protected function getData(): array
     {
         $startDate = isset($this->filters['startDate']) ? Carbon::parse($this->filters['startDate']) : null;
@@ -77,7 +74,7 @@ class EventsByTypeChart extends ChartWidget
         return app()->isLocal() ?
             $this->generateChartData($startDate, $endDate)
             :
-            Cache::remember('events-by-type-chart', 600, fn() => $this->generateChartData($startDate, $endDate));
+            Cache::remember('events-by-type-chart', 600, fn () => $this->generateChartData($startDate, $endDate));
     }
 
     private function generateChartData(?Carbon $start = null, ?Carbon $end = null): array
@@ -114,7 +111,7 @@ class EventsByTypeChart extends ChartWidget
                     'borderWidth' => 1,
                 ],
             ],
-            'labels' => Arr::map($labels, fn($label) => $label.' ('.$eventCounts[$label].')'),
+            'labels' => Arr::map($labels, fn ($label) => $label.' ('.$eventCounts[$label].')'),
         ];
     }
 

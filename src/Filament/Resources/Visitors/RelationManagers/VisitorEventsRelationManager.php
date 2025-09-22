@@ -2,10 +2,10 @@
 
 namespace NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\RelationManagers;
 
-use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\VisitorEvents\VisitorEventResource;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\VisitorEvents\VisitorEventResource;
 
 class VisitorEventsRelationManager extends RelationManager
 {
@@ -25,8 +25,7 @@ class VisitorEventsRelationManager extends RelationManager
                 TextColumn::make('name')
                     ->badge()
                     ->sortable()
-                    ->label(__('visitor-tracking-filament::resources.visitor_events.table.columns.name'))
-                ,
+                    ->label(__('visitor-tracking-filament::resources.visitor_events.table.columns.name')),
                 TextColumn::make('url')
                     ->searchable()
                     ->label(__('visitor-tracking-filament::resources.visitor_events.table.columns.url')),

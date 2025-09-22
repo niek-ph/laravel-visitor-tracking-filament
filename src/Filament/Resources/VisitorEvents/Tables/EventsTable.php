@@ -2,13 +2,13 @@
 
 namespace NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\VisitorEvents\Tables;
 
-use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\VisitorResource;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\ViewAction;
 use Filament\Support\Colors\Color;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\VisitorResource;
 
 class EventsTable
 {
@@ -22,7 +22,7 @@ class EventsTable
                     ->label(__('visitor-tracking-filament::resources.visitor_events.table.columns.created_at'))
                     ->placeholder('-'),
                 TextColumn::make('visitor.ip_address')
-                    ->url(fn($record): string => isset($record->visitor_id) ? VisitorResource::getUrl('view',
+                    ->url(fn ($record): string => isset($record->visitor_id) ? VisitorResource::getUrl('view',
                         ['record' => $record->visitor_id]) : '')
                     ->color(Color::Blue)
                     ->sortable()
@@ -31,8 +31,7 @@ class EventsTable
                 TextColumn::make('name')
                     ->badge()
                     ->sortable()
-                    ->label(__('visitor-tracking-filament::resources.visitor_events.table.columns.name'))
-                ,
+                    ->label(__('visitor-tracking-filament::resources.visitor_events.table.columns.name')),
                 TextColumn::make('url')
                     ->label(__('visitor-tracking-filament::resources.visitor_events.table.columns.url')),
             ])

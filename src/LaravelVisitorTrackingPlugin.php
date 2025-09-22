@@ -9,7 +9,6 @@ use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\VisitorRes
 
 class LaravelVisitorTrackingPlugin implements Plugin
 {
-
     public static function make(): static
     {
         return app(static::class);
@@ -19,7 +18,6 @@ class LaravelVisitorTrackingPlugin implements Plugin
     {
         return 'laravel-visitor-tracking';
     }
-
 
     public function register(Panel $panel): void
     {
