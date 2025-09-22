@@ -7,7 +7,6 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
-use NiekPH\LaravelVisitorTracking\VisitorTracking;
 use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\Pages\ListVisitors;
 use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\Pages\ViewVisitor;
 use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\RelationManagers\VisitorEventsRelationManager;
@@ -22,7 +21,7 @@ class VisitorResource extends Resource
 {
     public static function getModel(): string
     {
-        return VisitorTracking::$visitorModel;
+        return config('visitor-tracking.models.visitor');
     }
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::UserCircle;
@@ -57,7 +56,7 @@ class VisitorResource extends Resource
     public static function getRelations(): array
     {
         return [
-            VisitorEventsRelationManager::make(),
+            VisitorEventsRelationManager::class,
         ];
     }
 

@@ -7,7 +7,6 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
-use NiekPH\LaravelVisitorTracking\VisitorTracking;
 use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\VisitorEvents\Pages\ListEvents;
 use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\VisitorEvents\Pages\ViewEvent;
 use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\VisitorEvents\Schemas\EventInfolist;
@@ -17,7 +16,7 @@ class VisitorEventResource extends Resource
 {
     public static function getModel(): string
     {
-        return VisitorTracking::$eventModel;
+        return config('visitor-tracking.models.visitor_event');
     }
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;

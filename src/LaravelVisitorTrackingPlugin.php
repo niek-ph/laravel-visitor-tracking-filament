@@ -20,7 +20,7 @@ class LaravelVisitorTrackingPlugin implements Plugin
     public function register(Panel $panel): void
     {
         $panel
-            ->resources(config(''));
+            ->resources(config('visitor-tracking-filament.resources'));
         //            ->pages([])
     }
 
