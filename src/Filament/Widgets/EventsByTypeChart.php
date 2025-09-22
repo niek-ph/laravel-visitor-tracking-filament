@@ -74,7 +74,7 @@ class EventsByTypeChart extends ChartWidget
         return app()->isLocal() ?
             $this->generateChartData($startDate, $endDate)
             :
-            Cache::remember('events-by-type-chart', 600, fn() => $this->generateChartData($startDate, $endDate));
+            Cache::remember('events-by-type-chart', 600, fn () => $this->generateChartData($startDate, $endDate));
     }
 
     private function generateChartData(?Carbon $start = null, ?Carbon $end = null): array
@@ -111,7 +111,7 @@ class EventsByTypeChart extends ChartWidget
                     'borderWidth' => 1,
                 ],
             ],
-            'labels' => Arr::map($labels, fn($label) => $label.' ('.$eventCounts[$label].')'),
+            'labels' => Arr::map($labels, fn ($label) => $label.' ('.$eventCounts[$label].')'),
         ];
     }
 
