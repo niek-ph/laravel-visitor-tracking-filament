@@ -73,7 +73,7 @@ class RecentVisitorsChart extends ChartWidget
         return app()->isLocal() ?
             $this->generateChartData($startDate, $endDate)
             :
-            Cache::remember('recent-visitors-chart', 300, fn () => $this->generateChartData($startDate, $endDate));
+            Cache::remember('recent-visitors-chart', 300, fn() => $this->generateChartData($startDate, $endDate));
     }
 
     private function generateChartData(?Carbon $start = null, ?Carbon $end = null): array

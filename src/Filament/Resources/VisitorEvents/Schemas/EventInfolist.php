@@ -16,7 +16,7 @@ class EventInfolist
         return $schema
             ->components([
                 TextEntry::make('visitor.ip_address')
-                    ->url(fn ($record): string => isset($record->visitor_id) ? VisitorResource::getUrl('view',
+                    ->url(fn($record): string => isset($record->visitor_id) ? VisitorResource::getUrl('view',
                         ['record' => $record->visitor_id]) : '')
                     ->color(Color::Blue)
                     ->label(__('visitor-tracking-filament::resources.visitor_events.infolist.fields.visitor')),
