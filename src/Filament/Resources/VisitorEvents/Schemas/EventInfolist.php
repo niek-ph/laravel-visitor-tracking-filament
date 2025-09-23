@@ -5,7 +5,6 @@ namespace NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\VisitorEvents
 use Filament\Infolists\Components\CodeEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
-use Filament\Support\Colors\Color;
 use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\VisitorResource;
 use Phiki\Grammar\Grammar;
 
@@ -18,7 +17,7 @@ class EventInfolist
                 TextEntry::make('visitor.ip_address')
                     ->url(fn ($record): string => isset($record->visitor_id) ? VisitorResource::getUrl('view',
                         ['record' => $record->visitor_id]) : '')
-                    ->color(Color::Blue)
+                    ->color('primary')
                     ->label(__('visitor-tracking-filament::resources.visitor_events.infolist.fields.visitor')),
                 TextEntry::make('name')
                     ->label(__('visitor-tracking-filament::resources.visitor_events.infolist.fields.name')),

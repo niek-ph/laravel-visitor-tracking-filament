@@ -29,7 +29,8 @@ class VisitorsTable
                 TextColumn::make('ip_address')
                     ->searchable()
                     ->label(__('visitor-tracking-filament::resources.visitors.table.columns.ip_address'))
-                    ->placeholder('-'),
+                    ->placeholder('-')
+                    ->color('primary'),
                 TextColumn::make('tag')
                     ->searchable()
                     ->label(__('visitor-tracking-filament::resources.visitors.table.columns.tag'))
