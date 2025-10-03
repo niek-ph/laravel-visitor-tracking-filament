@@ -18,6 +18,14 @@ return [
                 'browser' => 'Browser',
                 'platform' => 'Platform',
             ],
+            'filters' => [
+                'is_bot' => [
+                    'placeholder' => 'All visitors',
+                    'true_label' => 'Bot visitors',
+                    'false_label' => 'Real visitors',
+                    'label' => 'Bots',
+                ],
+            ],
         ],
         'infolist' => [
             'fields' => [

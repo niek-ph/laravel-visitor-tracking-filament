@@ -72,7 +72,10 @@ class VisitorsTable
             ->defaultSort('created_at', 'desc')
             ->filters([
                 TernaryFilter::make('is_bot')
-                    ->label(__('visitor-tracking-filament::resources.visitors.table.columns.is_bot')),
+                    ->placeholder(__('visitor-tracking-filament::resources.visitors.table.filters.is_bot.placeholder'))
+                    ->trueLabel(__('visitor-tracking-filament::resources.visitors.table.filters.is_bot.true_label'))
+                    ->falseLabel(__('visitor-tracking-filament::resources.visitors.table.filters.is_bot.false_label'))
+                    ->label(__('visitor-tracking-filament::resources.visitors.table.filters.is_bot.label')),
             ])
             ->recordActions([
                 ViewAction::make(),
