@@ -7,6 +7,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 
 class VisitorsTable
@@ -19,54 +20,59 @@ class VisitorsTable
                     ->dateTime()
                     ->sortable()
                     ->label(__('visitor-tracking-filament::resources.visitors.table.columns.created_at'))
-                    ->placeholder('-'),
+                    ->placeholder('-')
+                    ->toggleable(),
                 TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true)
                     ->label(__('visitor-tracking-filament::resources.visitors.table.columns.updated_at'))
-                    ->placeholder('-'),
+                    ->placeholder('-')
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('ip_address')
                     ->searchable()
                     ->label(__('visitor-tracking-filament::resources.visitors.table.columns.ip_address'))
                     ->placeholder('-')
-                    ->color('primary'),
+                    ->color('primary')
+                    ->toggleable(),
                 TextColumn::make('tag')
                     ->searchable()
                     ->label(__('visitor-tracking-filament::resources.visitors.table.columns.tag'))
-                    ->placeholder('-'),
+                    ->placeholder('-')
+                    ->toggleable(),
                 TextColumn::make('user.name')
                     ->sortable()
                     ->label(__('visitor-tracking-filament::resources.visitors.table.columns.user'))
-                    ->placeholder('-'),
+                    ->placeholder('-')
+                    ->toggleable(),
                 TextColumn::make('user_agent')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 IconColumn::make('is_bot')
                     ->boolean()
                     ->label(__('visitor-tracking-filament::resources.visitors.table.columns.is_bot'))
-                    ->placeholder('-'),
+                    ->placeholder('-')
+                    ->toggleable(),
                 TextColumn::make('device')
-                    ->toggleable(isToggledHiddenByDefault: false)
                     ->label(__('visitor-tracking-filament::resources.visitors.table.columns.device'))
-                    ->placeholder('-'),
+                    ->placeholder('-')
+                    ->toggleable(),
                 TextColumn::make('browser')
-                    ->toggleable(isToggledHiddenByDefault: true)
                     ->label(__('visitor-tracking-filament::resources.visitors.table.columns.browser'))
-                    ->placeholder('-'),
+                    ->placeholder('-')
+                    ->toggleable(),
                 TextColumn::make('platform')
-                    ->toggleable(isToggledHiddenByDefault: false)
                     ->label(__('visitor-tracking-filament::resources.visitors.table.columns.platform'))
-                    ->placeholder('-'),
+                    ->placeholder('-')
+                    ->toggleable(),
                 TextColumn::make('platform_version')
-                    ->toggleable(isToggledHiddenByDefault: true)
                     ->label(__('visitor-tracking-filament::resources.visitors.table.columns.platform_version'))
-                    ->placeholder('-'),
-
+                    ->placeholder('-')
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->defaultSort('created_at', 'desc')
             ->filters([
-                //
+                TernaryFilter::make('is_bot')
+                    ->label(__('visitor-tracking-filament::resources.visitors.table.columns.is_bot')),
             ])
             ->recordActions([
                 ViewAction::make(),

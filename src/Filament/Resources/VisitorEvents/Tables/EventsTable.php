@@ -19,20 +19,24 @@ class EventsTable
                     ->dateTime()
                     ->sortable()
                     ->label(__('visitor-tracking-filament::resources.visitor_events.table.columns.created_at'))
-                    ->placeholder('-'),
+                    ->placeholder('-')
+                    ->toggleable(),
                 TextColumn::make('visitor.ip_address')
                     ->url(fn ($record): string => isset($record->visitor_id) ? VisitorResource::getUrl('view',
                         ['record' => $record->visitor_id]) : '')
                     ->color('primary')
                     ->sortable()
                     ->searchable()
-                    ->label(__('visitor-tracking-filament::resources.visitor_events.table.columns.ip_address')),
+                    ->label(__('visitor-tracking-filament::resources.visitor_events.table.columns.ip_address'))
+                    ->toggleable(),
                 TextColumn::make('name')
                     ->badge()
                     ->sortable()
-                    ->label(__('visitor-tracking-filament::resources.visitor_events.table.columns.name')),
+                    ->label(__('visitor-tracking-filament::resources.visitor_events.table.columns.name'))
+                    ->toggleable(),
                 TextColumn::make('url')
-                    ->label(__('visitor-tracking-filament::resources.visitor_events.table.columns.url')),
+                    ->label(__('visitor-tracking-filament::resources.visitor_events.table.columns.url'))
+                    ->toggleable(),
             ])
             ->defaultSort('created_at', 'desc')
             ->filters([
