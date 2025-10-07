@@ -17,6 +17,9 @@ return [
                 'is_bot' => 'Bot',
                 'browser' => 'Browser',
                 'platform' => 'Platform',
+                'geo_country' => 'Country',
+                'geo_region' => 'Region',
+                'geo_city' => 'City',
             ],
             'filters' => [
                 'is_bot' => [
@@ -28,6 +31,10 @@ return [
             ],
         ],
         'infolist' => [
+            'sections' => [
+                'geolocation' => 'Geolocation',
+                'details' => 'Details',
+            ],
             'fields' => [
                 'tag' => 'Unique tag',
                 'ip_address' => 'IP address',
@@ -38,6 +45,13 @@ return [
                 'platform' => 'Platform',
                 'platform_version' => 'Platform version',
                 'user' => 'User',
+                'geo_country' => 'Country',
+                'geo_region' => 'Region',
+                'geo_city' => 'City',
+                'geo_latitude' => 'Latitude',
+                'geo_longitude' => 'Longitude',
+                'coordinates' => 'Coordinates',
+                'google_maps' => 'Google maps',
             ],
         ],
     ],

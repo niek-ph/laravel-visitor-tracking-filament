@@ -17,6 +17,9 @@ return [
                 'is_bot' => 'Bot',
                 'browser' => 'Browser',
                 'platform' => 'Platform',
+                'geo_country' => 'Land',
+                'geo_region' => 'Regio',
+                'geo_city' => 'Stad',
             ],
             'filters' => [
                 'is_bot' => [
@@ -28,6 +31,10 @@ return [
             ],
         ],
         'infolist' => [
+            'sections' => [
+                'geolocation' => 'Locatie',
+                'details' => 'Details',
+            ],
             'fields' => [
                 'tag' => 'Unieke tag',
                 'ip_address' => 'IP adres',
@@ -38,6 +45,13 @@ return [
                 'platform' => 'Platform',
                 'platform_version' => 'Platform versie',
                 'user' => 'Gebruiker',
+                'geo_country' => 'Land',
+                'geo_region' => 'Regio',
+                'geo_city' => 'Stad',
+                'geo_latitude' => 'Breedtegraad',
+                'geo_longitude' => 'Lengtegraad',
+                'coordinates' => 'Coördinaten',
+                'google_maps' => 'Google maps',
             ],
         ],
     ],

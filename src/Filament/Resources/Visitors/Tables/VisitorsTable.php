@@ -68,6 +68,18 @@ class VisitorsTable
                     ->label(__('visitor-tracking-filament::resources.visitors.table.columns.platform_version'))
                     ->placeholder('-')
                     ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('geo_country')
+                    ->label(__('visitor-tracking-filament::resources.visitors.table.columns.geo_country'))
+                    ->placeholder('-')
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('geo_region')
+                    ->label(__('visitor-tracking-filament::resources.visitors.table.columns.geo_region'))
+                    ->placeholder('-')
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('geo_city')
+                    ->label(__('visitor-tracking-filament::resources.visitors.table.columns.geo_city'))
+                    ->placeholder('-')
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->defaultSort('created_at', 'desc')
             ->filters([
