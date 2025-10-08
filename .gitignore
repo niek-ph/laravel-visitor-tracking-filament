@@ -1,3 +1,5 @@
+package-lock.json
+
 # Composer Related
 composer.lock
 /vendor
