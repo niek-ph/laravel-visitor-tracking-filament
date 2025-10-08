@@ -40,5 +40,9 @@ return [
     'top_countries_list' => [
         'heading' => 'Country statistics',
         'description' => 'Statistics of the top 10 countries',
+        'no_data' => [
+            'title' => 'No data available',
+            'description' => 'Not enough data has been collected yet.',
+        ],
     ],
 ];

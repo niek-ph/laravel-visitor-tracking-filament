@@ -40,5 +40,9 @@ return [
     'top_countries_list' => [
         'heading' => 'Statistieken per land',
         'description' => 'Statistieken van de top 10 landen',
+        'no_data' => [
+            'title' => 'Geen data beschikbaar',
+            'description' => 'Er is nog niet genoeg data verzameld om deze informatie te tonen.',
+        ],
     ],
 ];
