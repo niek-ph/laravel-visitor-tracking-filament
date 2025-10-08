@@ -7,6 +7,7 @@ use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Illuminate\Database\Eloquent\Model;
 use NiekPH\LaravelVisitorTracking\Models\Visitor;
 use NiekPH\LaravelVisitorTrackingFilament\Facades\VisitorTrackingFilament;
 use NiekPH\LaravelVisitorTrackingFilament\Filament\Components\CountryEntry;
@@ -15,6 +16,9 @@ class VisitorInfolist
 {
     public static function configure(Schema $schema): Schema
     {
+        /** @var Model $model */
+        $model = $schema->model;
+
         return $schema
             ->components([
                 Grid::make()
@@ -30,13 +34,13 @@ class VisitorInfolist
                             ->boolean()
                             ->label(__('visitor-tracking-filament::resources.visitors.infolist.fields.is_bot'))
                             ->placeholder('-')
-                            ->hidden(! $schema->model->is_bot),
+                            ->hidden(! $model->getAttribute('is_bot')),
                     ]),
 
                 TextEntry::make('user.name')
                     ->label(__('visitor-tracking-filament::resources.visitors.infolist.fields.user'))
                     ->placeholder('-')
-                    ->hidden(is_null($schema->model->user_id))
+                    ->hidden(is_null($model->getAttribute('user_id')))
                     ->columnSpanFull(),
 
                 Section::make(__('visitor-tracking-filament::resources.visitors.infolist.sections.details'))
