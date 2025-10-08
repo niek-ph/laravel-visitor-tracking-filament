@@ -19,7 +19,7 @@
         "php": "^8.4||^8.5",
         "filament/filament": "^4.0",
         "illuminate/contracts": "^12.0",
-        "niek-ph/laravel-visitor-tracking": "^1.0",
+        "niek-ph/laravel-visitor-tracking": "^1.0.25",
         "phiki/phiki": "^2.0",
         "spatie/laravel-package-tools": "^1.16"
     },
