@@ -36,6 +36,7 @@ class TopDevicesPieChartWidget extends ChartWidget
         // Get device counts grouped by device type
         $deviceCounts = VisitorTracking::$visitorModel::select('device', DB::raw('COUNT(*) as count'))
             ->whereNotNull('device')
+            ->where('is_bot', false)
             ->where('device', '!=', '')
             ->groupBy('device')
             ->orderBy('count', 'desc')
@@ -45,6 +46,7 @@ class TopDevicesPieChartWidget extends ChartWidget
 
         // If we have more than 8 devices, group the rest as "Others"
         $totalDevices = VisitorTracking::$visitorModel::whereNotNull('device')
+            ->where('is_bot', false)
             ->where('device', '!=', '')
             ->count();
 

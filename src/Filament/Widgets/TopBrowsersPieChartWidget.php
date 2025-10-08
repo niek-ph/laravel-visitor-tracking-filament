@@ -34,7 +34,8 @@ class TopBrowsersPieChartWidget extends ChartWidget
     private function generateChartData(): array
     {
         // Get browser counts grouped by browser type
-        $browserCounts = VisitorTracking::$visitorModel::select('browser', DB::raw('COUNT(*) as count'))
+        $browserCounts = VisitorTracking::$visitorModel::where('is_bot', false)
+            ->select('browser', DB::raw('COUNT(*) as count'))
             ->whereNotNull('browser')
             ->where('browser', '!=', '')
             ->groupBy('browser')
@@ -45,6 +46,7 @@ class TopBrowsersPieChartWidget extends ChartWidget
 
         // If we have more than 8 browsers, group the rest as "Others"
         $totalBrowsers = VisitorTracking::$visitorModel::whereNotNull('browser')
+            ->where('is_bot', false)
             ->where('browser', '!=', '')
             ->count();
 

@@ -6,12 +6,12 @@ use Filament\Pages\Page;
 use Filament\Support\Enums\Width;
 use Filament\Support\Icons\Heroicon;
 use Illuminate\Contracts\Support\Htmlable;
-use NiekPH\LaravelVisitorTrackingFilament\Filament\Widgets\TopCountriesWidget;
-use NiekPH\LaravelVisitorTrackingFilament\Filament\Widgets\TopDevicesPieChartWidget;
 
 class AnalyticsPage extends Page
 {
     protected string $view = 'visitor-tracking-filament::pages.analytics';
+
+    protected static ?string $slug = 'analytics-dashboard';
 
     protected static string|\BackedEnum|null $navigationIcon = Heroicon::ChartBar;
 
@@ -43,11 +43,7 @@ class AnalyticsPage extends Page
     protected function getHeaderWidgets(): array
     {
         return [
-            //            VisitorCountTodayWidget::class,
-            //            RecentVisitorsChartWidget::class,
-            //            EventsByTypeChartWidget::class,
-            //            TopDevicesPieChartWidget::class,
-            //            TopCountriesWidget::class,
+
         ];
     }
 }

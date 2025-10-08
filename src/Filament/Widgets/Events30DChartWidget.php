@@ -11,8 +11,6 @@ use NiekPH\LaravelVisitorTracking\VisitorTracking;
 
 class Events30DChartWidget extends ChartWidget
 {
-    use ChartWidget\Concerns\HasFiltersSchema;
-
     public function getHeading(): string|Htmlable|null
     {
         return __('visitor-tracking-filament::widgets.events_30d_chart.heading');

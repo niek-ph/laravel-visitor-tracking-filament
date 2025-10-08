@@ -45,6 +45,7 @@ class TopCountriesWidget extends Widget
 
         // Get top 10 countries with visitor counts
         $topCountries = DB::table($tableName)
+            ->where('is_bot', false)
             ->select('geo_country', DB::raw('COUNT(*) as visitor_count'))
             ->whereNotNull('geo_country')
             ->where('geo_country', '!=', '')
@@ -56,6 +57,7 @@ class TopCountriesWidget extends Widget
 
         // Get total count for percentage calculation
         $totalCount = DB::table($tableName)
+            ->where('is_bot', false)
             ->whereNotNull('geo_country')
             ->where('geo_country', '!=', '')
             ->count();
