@@ -28,6 +28,10 @@ return [
                     'false_label' => 'Real visitors',
                     'label' => 'Bots',
                 ],
+                'geo_country' => [
+                    'placeholder' => 'All countries',
+                    'label' => 'Country',
+                ],
             ],
         ],
         'infolist' => [
@@ -52,6 +56,7 @@ return [
                 'geo_longitude' => 'Longitude',
                 'coordinates' => 'Coordinates',
                 'google_maps' => 'Google maps',
+                'created_at' => 'First visit on',
             ],
         ],
     ],

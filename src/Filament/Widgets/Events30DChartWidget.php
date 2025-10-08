@@ -2,27 +2,20 @@
 
 namespace NiekPH\LaravelVisitorTrackingFilament\Filament\Widgets;
 
-use Carbon\Carbon;
-use Filament\Actions\Action;
-use Filament\Forms\Components\DateTimePicker;
-use Filament\Schemas\Schema;
-use Filament\Support\Facades\FilamentIcon;
-use Filament\Support\Icons\Heroicon;
 use Filament\Widgets\ChartWidget;
-use Filament\Widgets\View\WidgetsIconAlias;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use NiekPH\LaravelVisitorTracking\VisitorTracking;
 
-class EventsByTypeChartWidget extends ChartWidget
+class Events30DChartWidget extends ChartWidget
 {
     use ChartWidget\Concerns\HasFiltersSchema;
 
     public function getHeading(): string|Htmlable|null
     {
-        return __('visitor-tracking-filament::widgets.events_by_type.heading');
+        return __('visitor-tracking-filament::widgets.events_30d_chart.heading');
     }
 
     protected int|string|array $columnSpan = 'full';
@@ -31,66 +24,20 @@ class EventsByTypeChartWidget extends ChartWidget
 
     protected static ?int $sort = 2;
 
-    public function getDescription(): string|Htmlable|null
-    {
-        $startDate = isset($this->filters['startDate']) ? Carbon::parse($this->filters['startDate']) : $this->getDefaultStartDate();
-        $endDate = isset($this->filters['endDate']) ? Carbon::parse($this->filters['endDate']) : now();
-
-        return __('visitor-tracking-filament::widgets.events_by_type.description',
-            ['start' => $startDate->toDateTimeString(), 'end' => $endDate->toDateTimeString()]);
-    }
-
-    public function getFiltersTriggerAction(): Action
-    {
-        return Action::make('filter')
-            ->label(__('filament-widgets::chart.actions.filter.label'))
-            ->icon(FilamentIcon::resolve(WidgetsIconAlias::CHART_WIDGET_FILTER) ?? Heroicon::Funnel)
-            ->color('gray')
-            ->button()
-            ->livewireClickHandlerEnabled(false);
-    }
-
-    public function filtersSchema(Schema $schema): Schema
-    {
-        return $schema->components([
-            DateTimePicker::make('startDate')
-                ->default($this->getDefaultStartDate())
-                ->label(__('visitor-tracking-filament::widgets.events_by_type.filter.start_date')),
-            DateTimePicker::make('endDate')
-                ->default(null)
-                ->label(__('visitor-tracking-filament::widgets.events_by_type.filter.end_date')),
-        ]);
-    }
-
-    private function getDefaultStartDate(): Carbon
-    {
-        return now()->subDays(30);
-    }
-
     protected function getData(): array
     {
-        $startDate = isset($this->filters['startDate']) ? Carbon::parse($this->filters['startDate']) : null;
-        $endDate = isset($this->filters['endDate']) ? Carbon::parse($this->filters['endDate']) : null;
-
-        // Cache for 10 minutes to improve performance
         return app()->isLocal() ?
-            $this->generateChartData($startDate, $endDate)
+            $this->generateChartData()
             :
-            Cache::remember('events-by-type-chart', 600, fn () => $this->generateChartData($startDate, $endDate));
+            Cache::remember('events-by-type-chart', 600, fn () => $this->generateChartData());
     }
 
-    private function generateChartData(?Carbon $start = null, ?Carbon $end = null): array
+    private function generateChartData(): array
     {
+        $start = now()->subDays(30);
         // Get event counts grouped by name
         $eventCounts = VisitorTracking::$eventModel::select('name', DB::raw('COUNT(*) as count'))
-            ->where(function ($subQuery) use ($end, $start) {
-                if (isset($start)) {
-                    $subQuery->where('created_at', '>=', $start);
-                }
-                if (isset($end)) {
-                    $subQuery->where('created_at', '<=', $end);
-                }
-            })
+            ->where('created_at', '>=', $start)
             ->groupBy('name')
             ->orderBy('count', 'desc')
             ->limit(10) // Limit to top 10 event types for better readability
@@ -106,7 +53,7 @@ class EventsByTypeChartWidget extends ChartWidget
         return [
             'datasets' => [
                 [
-                    'label' => __('visitor-tracking-filament::widgets.events_by_type.label'),
+                    'label' => __('visitor-tracking-filament::widgets.events_30d_chart.label'),
                     'data' => $data,
                     'backgroundColor' => $colors['background'],
                     'borderColor' => $colors['border'],

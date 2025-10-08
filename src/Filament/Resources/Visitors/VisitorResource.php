@@ -12,9 +12,7 @@ use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\Pages\View
 use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\RelationManagers\VisitorEventsRelationManager;
 use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\Schemas\VisitorInfolist;
 use NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\Tables\VisitorsTable;
-use NiekPH\LaravelVisitorTrackingFilament\Filament\Widgets\EventsByTypeChartWidget;
-use NiekPH\LaravelVisitorTrackingFilament\Filament\Widgets\RecentVisitorsChartWidget;
-use NiekPH\LaravelVisitorTrackingFilament\Filament\Widgets\VisitorCountTodayWidget;
+use NiekPH\LaravelVisitorTrackingFilament\Filament\Widgets\TotalVisitorsStatWidget;
 use UnitEnum;
 
 class VisitorResource extends Resource
@@ -24,9 +22,9 @@ class VisitorResource extends Resource
         return config('visitor-tracking.models.visitor');
     }
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::UserCircle;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUserCircle;
 
-    protected static ?string $recordTitleAttribute = 'tag';
+    protected static ?string $recordTitleAttribute = 'ip_address';
 
     public static function getNavigationGroup(): string|UnitEnum|null
     {
@@ -63,9 +61,9 @@ class VisitorResource extends Resource
     public static function getWidgets(): array
     {
         return [
-            VisitorCountTodayWidget::class,
-            RecentVisitorsChartWidget::class,
-            EventsByTypeChartWidget::class,
+            TotalVisitorsStatWidget::class,
+            //            VisitorsChartWidget::class,
+            //            EventsChartWidget::class,
         ];
     }
 

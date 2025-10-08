@@ -2,7 +2,7 @@
 
 namespace NiekPH\LaravelVisitorTrackingFilament\Tests;
 
-use NiekPH\LaravelVisitorTrackingFilament\LaravelVisitorTrackingFilamentServiceProvider;
+use NiekPH\LaravelVisitorTrackingFilament\VisitorTrackingFilamentServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
@@ -16,7 +16,7 @@ class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            LaravelVisitorTrackingFilamentServiceProvider::class,
+            VisitorTrackingFilamentServiceProvider::class,
         ];
     }
 

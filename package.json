@@ -1,0 +1,12 @@
+{
+    "private": true,
+    "scripts": {
+        "build": "vite build",
+        "build:styles": "npx @tailwindcss/cli -i ./resources/css/styles.css -o ./resources/dist/styles.css --minify",
+        "watch:styles": "npx @tailwindcss/cli -i ./resources/css/styles.css -o ./resources/dist/styles.css --minify --watch"
+    },
+    "dependencies": {
+        "@tailwindcss/cli": "^4.1.14",
+        "tailwindcss": "^4.1.14"
+    }
+}

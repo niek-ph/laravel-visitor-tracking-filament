@@ -4,9 +4,7 @@ namespace NiekPH\LaravelVisitorTrackingFilament\Filament\Resources\Visitors\Page
 
 use Filament\Resources\Pages\ListRecords;
 use Filament\Support\Enums\Width;
-use NiekPH\LaravelVisitorTrackingFilament\Filament\Widgets\EventsByTypeChartWidget;
-use NiekPH\LaravelVisitorTrackingFilament\Filament\Widgets\RecentVisitorsChartWidget;
-use NiekPH\LaravelVisitorTrackingFilament\Filament\Widgets\VisitorCountTodayWidget;
+use NiekPH\LaravelVisitorTrackingFilament\Filament\Widgets\RecentVisitorsStatWidget;
 
 class ListVisitors extends ListRecords
 {
@@ -25,15 +23,16 @@ class ListVisitors extends ListRecords
     protected function getHeaderWidgets(): array
     {
         return [
+            RecentVisitorsStatWidget::class,
+            //            RecentVisitorsChartWidget::class,
+            //            EventsByTypeChartWidget::class,
         ];
     }
 
     protected function getFooterWidgets(): array
     {
         return [
-            VisitorCountTodayWidget::class,
-            RecentVisitorsChartWidget::class,
-            EventsByTypeChartWidget::class,
+
         ];
     }
 }

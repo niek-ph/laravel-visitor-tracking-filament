@@ -66,8 +66,11 @@
     "extra": {
         "laravel": {
             "providers": [
-                "NiekPH\\LaravelVisitorTrackingFilament\\LaravelVisitorTrackingFilamentServiceProvider"
-            ]
+                "NiekPH\\LaravelVisitorTrackingFilament\\VisitorTrackingFilamentServiceProvider"
+            ],
+            "aliases": {
+                "VisitorTracking": "NiekPH\\LaravelVisitorTrackingFilament\\Facades\\VisitorTrackingFilament"
+            }
         }
     },
     "minimum-stability": "dev",

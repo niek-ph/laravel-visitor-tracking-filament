@@ -28,6 +28,10 @@ return [
                     'false_label' => 'Alleen echte bezoekers',
                     'label' => 'Bots',
                 ],
+                'geo_country' => [
+                    'placeholder' => 'Alle landen',
+                    'label' => 'Land',
+                ],
             ],
         ],
         'infolist' => [
@@ -52,6 +56,7 @@ return [
                 'geo_longitude' => 'Lengtegraad',
                 'coordinates' => 'Coördinaten',
                 'google_maps' => 'Google maps',
+                'created_at' => 'Eerste bezoek op',
             ],
         ],
     ],

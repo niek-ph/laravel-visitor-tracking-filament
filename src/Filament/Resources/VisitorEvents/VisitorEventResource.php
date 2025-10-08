@@ -19,9 +19,9 @@ class VisitorEventResource extends Resource
         return config('visitor-tracking.models.visitor_event');
     }
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::CursorArrowRays;
 
-    protected static bool $shouldRegisterNavigation = false;
+    //    protected static bool $shouldRegisterNavigation = false;
 
     public static function getNavigationGroup(): string|\UnitEnum|null
     {

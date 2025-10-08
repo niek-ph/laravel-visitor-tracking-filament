@@ -7,7 +7,7 @@ use Filament\Widgets\StatsOverviewWidget\Stat;
 use Illuminate\Support\Number;
 use NiekPH\LaravelVisitorTracking\VisitorTracking;
 
-class VisitorCountTodayWidget extends StatsOverviewWidget
+class RecentVisitorsStatWidget extends StatsOverviewWidget
 {
     protected static ?int $sort = 0;
 
@@ -16,12 +16,14 @@ class VisitorCountTodayWidget extends StatsOverviewWidget
         $data = $this->getData();
 
         return [
-            Stat::make(__('visitor-tracking-filament::widgets.visitor_counts.visitors_total'),
-                $this->formatNumber($data['visitors_total'])),
-            Stat::make(__('visitor-tracking-filament::widgets.visitor_counts.visitors_today'),
+            Stat::make(__('visitor-tracking-filament::widgets.recent_visitors_stat.visitors_today'),
                 $this->formatNumber($data['visitors_today'])),
-            Stat::make(__('visitor-tracking-filament::widgets.visitor_counts.page_views_today'),
-                $this->formatNumber($data['page_views_today'])),
+
+            Stat::make(__('visitor-tracking-filament::widgets.recent_visitors_stat.new_visitors_today'),
+                $this->formatNumber($data['new_visitors_today'])),
+
+            Stat::make(__('visitor-tracking-filament::widgets.recent_visitors_stat.events_today'),
+                $this->formatNumber($data['events_today'])),
         ];
     }
 
@@ -35,14 +37,13 @@ class VisitorCountTodayWidget extends StatsOverviewWidget
         $today = today();
 
         return [
-            'visitors_total' => VisitorTracking::$visitorModel::count(),
             'visitors_today' => VisitorTracking::$visitorModel::whereHas(
                 'events',
                 fn ($q) => $q->whereDate('created_at', $today)
             )->count(),
-            'page_views_today' => VisitorTracking::$eventModel::where('name', 'page_view')
-                ->whereDate('created_at', $today)
-                ->count(),
+            'new_visitors_today' => VisitorTracking::$visitorModel::whereDate('created_at', $today)->count(),
+            'events_today' => VisitorTracking::$eventModel::whereDate('created_at', $today)->count(),
+
         ];
     }
 }

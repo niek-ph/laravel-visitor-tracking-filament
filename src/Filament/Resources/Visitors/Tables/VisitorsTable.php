@@ -7,8 +7,10 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
+use NiekPH\LaravelVisitorTrackingFilament\Filament\Components\CountryColumn;
 
 class VisitorsTable
 {
@@ -59,19 +61,22 @@ class VisitorsTable
                 TextColumn::make('browser')
                     ->label(__('visitor-tracking-filament::resources.visitors.table.columns.browser'))
                     ->placeholder('-')
-                    ->toggleable(),
+                    ->toggleable()
+                    ->sortable(),
                 TextColumn::make('platform')
                     ->label(__('visitor-tracking-filament::resources.visitors.table.columns.platform'))
                     ->placeholder('-')
-                    ->toggleable(),
+                    ->toggleable()
+                    ->sortable(),
                 TextColumn::make('platform_version')
                     ->label(__('visitor-tracking-filament::resources.visitors.table.columns.platform_version'))
                     ->placeholder('-')
                     ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('geo_country')
+                CountryColumn::make('geo_country')
                     ->label(__('visitor-tracking-filament::resources.visitors.table.columns.geo_country'))
                     ->placeholder('-')
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable()
+                    ->sortable(),
                 TextColumn::make('geo_region')
                     ->label(__('visitor-tracking-filament::resources.visitors.table.columns.geo_region'))
                     ->placeholder('-')
@@ -88,6 +93,11 @@ class VisitorsTable
                     ->trueLabel(__('visitor-tracking-filament::resources.visitors.table.filters.is_bot.true_label'))
                     ->falseLabel(__('visitor-tracking-filament::resources.visitors.table.filters.is_bot.false_label'))
                     ->label(__('visitor-tracking-filament::resources.visitors.table.filters.is_bot.label')),
+
+                SelectFilter::make('geo_country')
+                    ->options(__('visitor-tracking-filament::countries'))
+                    ->placeholder(__('visitor-tracking-filament::resources.visitors.table.filters.geo_country.placeholder'))
+                    ->label(__('visitor-tracking-filament::resources.visitors.table.filters.geo_country.label')),
             ])
             ->recordActions([
                 ViewAction::make(),
